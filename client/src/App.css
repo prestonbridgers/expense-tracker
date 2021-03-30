@@ -1,0 +1,15 @@
+.loadBtn {
+    background-color: aqua;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+h1 {
+    text-align: center;
+}
+
+.expense {
+    text-align: center;
+    font-family: cursive;
+    font-size: 23pt;
+}
