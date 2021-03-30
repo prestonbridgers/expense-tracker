@@ -8,7 +8,7 @@ const app = express();
 app.use(cors());
 
 const dburi = require('./config/mongoose').dburi;
-const port = require('./config/network').port;
+const port = process.env.PORT || 5000;
 
 mongoose.connect(dburi, { useNewUrlParser: true, useUnifiedTopology: true }, err => {
     if (err) {

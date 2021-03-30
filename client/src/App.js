@@ -11,7 +11,7 @@ function App() {
   const [total, setTotal] = useState(0);
 
   const loadExpenses = () => {
-    axios.get('http://localhost:5000/api/expenses')
+    axios.get('/api/expenses')
       .then(res => {
         console.log(res);
         setExpenses(res.data);
@@ -28,7 +28,7 @@ function App() {
   const submitAddForm = event => {
     event.preventDefault();
 
-    axios.post('http://localhost:5000/api/expenses', {
+    axios.post('/api/expenses', {
       name: expenseTitle,
       amount: parseFloat(expenseAmt)
     })
@@ -46,7 +46,7 @@ function App() {
 
   const clickExpense = event => {
     axios
-      .delete(`http://localhost:5000/api/expenses/${event.target.id}`)
+      .delete(`/api/expenses/${event.target.id}`)
       .then(response => {
         console.log(response);
         loadExpenses();
