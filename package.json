@@ -4,6 +4,7 @@
   "description": "Expense tracker made with MERN stack.",
   "main": "index.js",
   "scripts": {
+    "start" : "node server.js",
     "client": "npm start --prefix client",
     "server": "nodemon server.js",
     "dev": "concurrently \"npm run client\" \"npm run server\"",
