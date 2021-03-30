@@ -1,10 +1,10 @@
 import Expense from './Expense';
 
-const ExpenseView = ({ expenses }) => {
+const ExpenseView = ({ expenses, onClick }) => {
     return (
         <div>
             {expenses.map(e => (
-                    <Expense key={e._id} expense={e}/>
+                    <Expense key={e._id} onClick={onClick} expense={e}/>
             ))}
         </div>
     );

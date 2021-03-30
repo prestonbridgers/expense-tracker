@@ -1,7 +1,8 @@
-const Expense = ({ expense }) => {
+const Expense = ({ expense, onClick }) => {
     return (
         <div className="expense">
-            <p>{expense.name}: ${expense.amount}</p>
+            <p onClick={onClick}
+               id={expense._id}>{expense.name}: ${expense.amount}</p>
         </div>
     );
 };
