@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const expenseSchema = Schema({
+    user: {
+        type: String,
+        require: true
+    },
     name: {
         type: String,
         require: true

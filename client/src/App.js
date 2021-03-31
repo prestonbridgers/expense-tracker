@@ -3,17 +3,19 @@ import { useState, useEffect } from 'react';
 import ExpenseView from './components/ExpenseView';
 import axios from 'axios';
 import AddExpenseForm from './components/AddExpenseForm';
+import UserForm from './components/UserForm';
 
 function App() {
   const [expenses, setExpenses] = useState([]);
   const [expenseTitle, setExpenseTitle] = useState("defaultName");
   const [expenseAmt, setExpenseAmt] = useState("defaultAmt");
   const [total, setTotal] = useState(0);
+  const [user, setUser] = useState("default");
 
   const loadExpenses = () => {
-    axios.get('/api/expenses')
+    axios.get(`/api/expenses/${user}`)
       .then(res => {
-        console.log(res);
+        console.log(res.data);
         setExpenses(res.data);
       })
   }
@@ -29,6 +31,7 @@ function App() {
     event.preventDefault();
 
     axios.post('/api/expenses', {
+      user: user,
       name: expenseTitle,
       amount: parseFloat(expenseAmt)
     })
@@ -44,6 +47,11 @@ function App() {
     event.target.amount.value = "";
   }
 
+  const submitUser = event => {
+    event.preventDefault();
+    setUser(event.target.user.value);
+  }
+
   const clickExpense = event => {
     axios
       .delete(`/api/expenses/${event.target.id}`)
@@ -56,12 +64,14 @@ function App() {
       })
   };
 
-  useEffect(loadExpenses, []);
+  useEffect(loadExpenses, [user]);
   useEffect(calculateTotal, [expenses]);
 
   return (
     <div>
       <h1>Expense Tracker</h1>
+      <h2>Current User: {user}</h2>
+      <UserForm submitUser={ submitUser }/>
       <h2>Total: ${total.toFixed(2)}</h2>
       <AddExpenseForm submit={submitAddForm}
                       nameChange={event => setExpenseTitle(event.target.value)}

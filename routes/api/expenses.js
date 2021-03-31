@@ -2,12 +2,13 @@ const Expense = require('../../models/Expense');
 const express = require('express');
 const router = express.Router();
 
-// @route  GET /api/expenses
+// @route  GET /api/expenses/:userName
 // @desc   Gets all expenses
 // @access public
-router.get('/', (req, res, next) => {
+router.get('/:user', (req, res, next) => {
+    console.log('looking for expenses for:', req.params.user);
     Expense
-        .find()
+        .find({ user: req.params.user })
         .sort({ updatedAt: -1 })
         .then(items => {
             res.json(items);
@@ -19,6 +20,7 @@ router.get('/', (req, res, next) => {
 // @access public
 router.post('/', (req, res) => {
     const expense = Expense({
+        user: req.body.user,
         name: req.body.name,
         amount: req.body.amount
     });
