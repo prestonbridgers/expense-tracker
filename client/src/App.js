@@ -68,11 +68,11 @@ function App() {
   useEffect(calculateTotal, [expenses]);
 
   return (
-    <div>
-      <h1>Expense Tracker</h1>
-      <h2>Current User: {user}</h2>
+    <div className="App">
+      <h1 className="Header">Expense Tracker</h1>
+      <h2 className="CurrentUser">Current User: {user}</h2>
       <UserForm submitUser={ submitUser }/>
-      <h2>Total: ${total.toFixed(2)}</h2>
+      <h2 className="Total">Total: ${total.toFixed(2)}</h2>
       <AddExpenseForm submit={submitAddForm}
                       nameChange={event => setExpenseTitle(event.target.value)}
                       amtChange={event => setExpenseAmt(event.target.value)} />

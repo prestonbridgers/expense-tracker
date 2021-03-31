@@ -1,16 +1,66 @@
-.loadBtn {
-    background-color: aqua;
-    margin-left: 50%;
-    transform: translateX(-50%);
+body {
+    background-color: #bfbfbf;
 }
 
-h1 {
+.App {
+    display: grid;
+    grid-template-columns: .25f .25f .25f .25f;
+    grid-template-areas: "header header header header"
+                         "user user total total"
+                         "userForm view view view"
+                         "expenseForm view view view";
+}
+
+h4 {
+    text-align: center;
+    margin-top: 0px;
+    height: 0px;
+}
+
+.Header {
+    grid-area: header;
+    /* border: 1px solid black; */
     text-align: center;
 }
 
-.expense {
+.Total {
+    grid-area: total;
+    /* border: 1px solid black; */
     text-align: center;
-    font-family: cursive;
-    font-size: 23pt;
+}
+
+.CurrentUser {
+    grid-area: user;
+    /* border: 1px solid black; */
+    text-align: center;
+}
+
+.UserForm {
+    grid-area: userForm;
+    /* border: 1px solid black; */
+    display: flex;
+    flex-direction: column;
+}
+
+.AddExpenseForm {
+    margin-top: 10px;
+    grid-area: expenseForm;
+    /* border: 1px solid black; */
+    display: flex;
+    flex-direction: column;
+}
+
+.ExpenseView {
+    grid-area: view;
+    /* border: 1px solid black; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.Expense {
+    /* border: 1px solid black; */
     cursor: pointer;
+    font-size: 14pt;
 }
